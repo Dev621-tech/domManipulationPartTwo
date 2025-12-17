@@ -38,3 +38,16 @@ menuLinks.forEach(link =>{
 
     topMenuEl.appendChild(a);
 });
+
+// STARTING LAB
+
+let subMenuEl = document.getElementById("sub-menu");
+
+subMenuEl.style.height = '100%';
+subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)';
+
+subMenuEl.classList.add('flex-around');
+
+// Temporarily Hiding SubMenu
+subMenuEl.style.position = 'absolute';
+subMenuEl.style.top = '0';
