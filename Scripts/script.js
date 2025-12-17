@@ -23,18 +23,51 @@ topMenuEl.classList.add('flex-around');
 
 // Menu data structure
 var menuLinks = [
-  { text: 'about', href: '/about' },
-  { text: 'catalog', href: '/catalog' },
-  { text: 'orders', href: '/orders' },
-  { text: 'account', href: '/account' },
+
+    { text: 'about', href: '/about' },
+
+    {
+        text: 'catalog', href: '#', subLinks: [
+
+            { text: 'all', href: '/catalog/all' },
+
+            { text: 'top selling', href: '/catalog/top' },
+
+            { text: 'search', href: '/catalog/search' },
+
+        ]
+    },
+
+    {
+        text: 'orders', href: '#', subLinks: [
+
+            { text: 'new', href: '/orders/new' },
+
+            { text: 'pending', href: '/orders/pending' },
+
+            { text: 'history', href: '/orders/history' },
+
+        ]
+    },
+
+    {
+        text: 'account', href: '#', subLinks: [
+
+            { text: 'profile', href: '/account/profile' },
+
+            { text: 'sign out', href: '/account/signout' },
+
+        ]
+    },
+
 ];
 
-menuLinks.forEach(link =>{
+menuLinks.forEach(link => {
     let a = document.createElement('a');
 
     a.href = link.href; // a.setAttribute("href", link.href);
 
-    a.textContent = link.text; 
+    a.textContent = link.text;
 
     topMenuEl.appendChild(a);
 });
@@ -51,3 +84,17 @@ subMenuEl.classList.add('flex-around');
 // Temporarily Hiding SubMenu
 subMenuEl.style.position = 'absolute';
 subMenuEl.style.top = '0';
+
+// PART 4: ADDING MENU INTERACTION
+
+let topMenuLinks = topMenuEl.getElementsByTagName('A');
+
+topMenuEl.addEventListener('click', (e) => {
+   
+    e.preventDefault();
+
+    if(e.target.tagName !== ('A')) return;
+
+    console.log(e.target.tagName);
+});
+
