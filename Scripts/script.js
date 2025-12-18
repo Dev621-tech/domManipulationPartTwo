@@ -93,8 +93,19 @@ topMenuEl.addEventListener('click', (e) => {
    
     e.preventDefault();
 
+    
     if(e.target.tagName !== ('A')) return;
 
-    console.log(e.target.tagName);
+    
+// go through each link and remove active if its not clicked (e.target)
+  for (let link of topMenuLinks){
+    if (link !== e.target){
+        link.classList.remove('active');
+    }
+  }
+// if active , makes it unactive
+// if unactive, makes it active
+  e.target.classList.toggle('active')
+
 });
 
