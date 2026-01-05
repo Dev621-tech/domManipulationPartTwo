@@ -85,6 +85,23 @@ subMenuEl.classList.add('flex-around');
 subMenuEl.style.position = 'absolute';
 subMenuEl.style.top = '0';
 
+
+// buildSubmenu helper function
+function buildSubmenu (subLinks) {
+    // clears previous links
+    subMenuEl.innerHTML = '';
+
+    subLinks.forEach(link =>{
+        const a = document.createElement('a');
+
+        a.href = link.href;
+
+        a.textContent = link.text;
+
+        subMenuEl.appendChild(a);
+    });
+}
+
 // PART 4: ADDING MENU INTERACTION
 
 let topMenuLinks = topMenuEl.getElementsByTagName('A');
@@ -103,9 +120,36 @@ topMenuEl.addEventListener('click', (e) => {
         link.classList.remove('active');
     }
   }
+
+  // variable notActive is a e.target that is NOT ACTIVE
+//   const notActive = !e.target.classList.contains('active');
+  
 // if active , makes it unactive
 // if unactive, makes it active
   e.target.classList.toggle('active')
 
+  // search through menuLinks array and find the one object whose text matches the text of the clicked <a>
+
+  // .find() loops through the array one item at a time a returns the first item that matches a condtion
+
+  // is the menu object's text the same as the clicked link's text
+
+  const linkObject = menuLinks.find(
+    link => link.text === e.target.textContent
+  );
+
+
+  // if the clicked <a> is active and does it have subLinks show them , if NOT show nothing
+  if (e.target.classList.contains('active') && linkObject.subLinks){
+    subMenuEl.style.top = '100%';
+
+    buildSubmenu(linkObject.subLinks);
+
+
+  } else {
+    subMenuEl.style.top = '0%'
+  }
+
 });
+
 
