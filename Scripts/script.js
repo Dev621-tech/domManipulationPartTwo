@@ -120,9 +120,6 @@ topMenuEl.addEventListener('click', (e) => {
         link.classList.remove('active');
     }
   }
-
-  // variable notActive is a e.target that is NOT ACTIVE
-//   const notActive = !e.target.classList.contains('active');
   
 // if active , makes it unactive
 // if unactive, makes it active
@@ -155,17 +152,19 @@ topMenuEl.addEventListener('click', (e) => {
 subMenuEl.addEventListener('click', function(e){
     e.preventDefault();
 
+   // if not <a> element then return
     if (e.target.tagName !== 'A') return;
 
-    console.log(e.target.textContent);
+    // console.log(e.target.textContent);
 
     subMenuEl.style.top = '0%';
 
+    // remove "active" class from top menu links
     for (let link of topMenuLinks){
         link.classList.remove('active');
     }
 
+    // Changes word in center of screen to clicked submenu text
     mainEL[0].innerHTML = `<h1>${e.target.textContent}</h1>`;
-
    
 });
