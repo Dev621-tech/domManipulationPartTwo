@@ -152,4 +152,20 @@ topMenuEl.addEventListener('click', (e) => {
 
 });
 
+subMenuEl.addEventListener('click', function(e){
+    e.preventDefault();
 
+    if (e.target.tagName !== 'A') return;
+
+    console.log(e.target.textContent);
+
+    subMenuEl.style.top = '0%';
+
+    for (let link of topMenuLinks){
+        link.classList.remove('active');
+    }
+
+    mainEL[0].innerHTML = `<h1>${e.target.textContent}</h1>`;
+
+   
+});
